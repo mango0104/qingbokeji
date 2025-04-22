@@ -1,0 +1,16 @@
+
+版本介绍：
+1. fit_and_update_model.py 为线性回归模型拟合文件，并将生成的 model.pkl 文件上传至 github 的固定路径中；
+2. liaowei_predict_model.py 与 liaowei_predict_model_byReal.py 均为料位预测模型，前者为在最优振幅控制下、后者为真实(平均值)振幅控制下；
+3. liaowei_predict_result.py 为判断最优振幅下料位结果文件，其中新建 Prediction 类，初始化固定参数、调用 liaowei_predict_model.py 中的 liaowei_predict 函数、得到结果；
+4. read_mysql_model.py 为获取特定时间范围内数据库参数，包括进料时间计划、时间戳、振幅、料位；
+5. liaowei_comparison_plot.py 为振幅（包含最优及真实）下真实料位与预测料位变化对比图形，输入参数为 真实数据、预测数据、开始时间、时间长度、时间间隔；
+6. zhenfu_comparison_plot.py 为真实振幅与最优振幅随时间的变化情况，输入参数为 真实数据、振幅时间列表、开始时间、时间长度、时间间隔；
+7. result_and_plot.py 为结果曲线总文件，调用 liaowei_comparison_plot.py 及 zhenfu_comparison_plot.py 中方法，借用 ax 对象，将所有图形在一张图上呈现；
+7. main.py 为总运行文件，包含 类的实例化、设置最优振幅相关参数、调用预测函数、调用 result_and_plot 函数绘图。
+
+其他说明：
+1. 该版本的线性回归模型采用github拉取的方式、解析并得到斜率截距；
+2. 真实数据从数据库中获取；
+3. 其中有多处函数调用及真实数据解析部分，可能造成运算时间的增加，但是出于对各功能模块化的考虑，方便后期调用；
+4. 线性回归模型的实时更新未在该版本中体现。
